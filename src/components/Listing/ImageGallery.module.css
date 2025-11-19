@@ -1,0 +1,127 @@
+.galleryContainer {
+    padding-top: 24px;
+    margin-bottom: 32px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.actions {
+    display: flex;
+    gap: 16px;
+}
+
+.actionBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: underline;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.actionBtn:hover {
+    background-color: var(--bg-secondary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 8px;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 400px;
+}
+
+@media (max-width: 744px) {
+    .grid {
+        grid-template-columns: 1fr;
+        height: auto;
+        aspect-ratio: 3/2;
+    }
+
+    .subImages {
+        display: none;
+    }
+
+    .mainImage {
+        height: 100%;
+    }
+}
+
+.mainImage {
+    height: 100%;
+    position: relative;
+}
+
+.mainImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.mainImage:hover::after,
+.subImageItem:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+}
+
+.subImages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+    height: 100%;
+}
+
+.subImageItem {
+    position: relative;
+    height: 100%;
+}
+
+.subImageItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.showAllBtn {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    background-color: white;
+    border: 1px solid var(--text-primary);
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s ease;
+}
+
+.showAllBtn:active {
+    transform: scale(0.96);
+}

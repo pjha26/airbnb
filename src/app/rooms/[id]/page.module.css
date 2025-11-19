@@ -1,0 +1,17 @@
+.pageContainer {
+    padding-bottom: 48px;
+}
+
+.contentGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    position: relative;
+}
+
+@media (min-width: 1128px) {
+    .contentGrid {
+        grid-template-columns: 2fr 1fr;
+        gap: 80px;
+    }
+}

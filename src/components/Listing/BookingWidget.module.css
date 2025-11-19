@@ -1,0 +1,143 @@
+.widgetContainer {
+    position: relative;
+    width: 100%;
+}
+
+.widget {
+    position: sticky;
+    top: 100px;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    background-color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.night {
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.dot {
+    margin: 0 2px;
+}
+
+.reviews {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+.picker {
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.dates {
+    display: flex;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.checkIn,
+.checkOut {
+    flex: 1;
+    padding: 10px 12px;
+}
+
+.checkIn {
+    border-right: 1px solid var(--border-dark);
+}
+
+.label {
+    font-size: 10px;
+    font-weight: 800;
+    margin-bottom: 2px;
+}
+
+.value {
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.guests {
+    padding: 10px 12px;
+}
+
+.guests .value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reserveBtn {
+    width: 100%;
+    background-color: var(--primary);
+    color: white;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    transition: filter 0.2s;
+}
+
+.reserveBtn:hover {
+    filter: brightness(0.95);
+}
+
+.disclaimer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.priceBreakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-primary);
+}
