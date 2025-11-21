@@ -106,7 +106,7 @@
 }
 
 .submitBtn {
-    background: #ff385c;
+    background: var(--secondary);
     color: white;
     border: none;
     padding: 14px;

@@ -93,7 +93,7 @@
 
 .reserveBtn {
     width: 100%;
-    background-color: var(--primary);
+    background-color: var(--secondary);
     color: white;
     padding: 14px;
     border-radius: 8px;
