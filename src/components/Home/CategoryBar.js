@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import styles from './CategoryBar.module.css';
 import { categories } from '@/data/mockData';

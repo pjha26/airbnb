@@ -9,6 +9,7 @@ async function getListing(id) {
     try {
         const listing = await prisma.listing.findUnique({
             where: { id: id },
+            include: { host: true },
         });
         return listing;
     } catch (error) {

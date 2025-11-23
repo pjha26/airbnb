@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { Star, Heart } from 'lucide-react';
@@ -12,7 +14,7 @@ const ListingCard = ({ listing }) => {
         >
             <Link href={`/rooms/${listing.id}`} className={styles.card}>
                 <div className={styles.imageContainer}>
-                    <img src={listing.image} alt={listing.title} className={styles.image} />
+                    <img src={listing.images?.[0] || listing.image} alt={listing.title} className={styles.image} />
                     <button className={styles.favoriteBtn}>
                         <Heart size={24} color="white" strokeWidth={2} className={styles.heartIcon} />
                     </button>
