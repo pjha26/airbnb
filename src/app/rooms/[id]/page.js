@@ -1,26 +1,28 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import React from 'react';
 import ImageGallery from '@/components/Listing/ImageGallery';
 import ListingInfo from '@/components/Listing/ListingInfo';
 import BookingWidget from '@/components/Listing/BookingWidget';
-import { listings } from '@/data/mockData';
+import prisma from '@/lib/prisma';
 import styles from './page.module.css';
 
-export default function ListingPage() {
-    const params = useParams();
-    const [listing, setListing] = useState(null);
+async function getListing(id) {
+    try {
+        const listing = await prisma.listing.findUnique({
+            where: { id: id },
+        });
+        return listing;
+    } catch (error) {
+        console.error('Error fetching listing:', error);
+        return null;
+    }
+}
 
-    useEffect(() => {
-        if (params.id) {
-            const foundListing = listings.find(l => l.id === params.id);
-            setListing(foundListing || listings[0]); // Fallback to first listing if not found
-        }
-    }, [params.id]);
+export default async function ListingPage({ params }) {
+    const { id } = await params;
+    const listing = await getListing(id);
 
     if (!listing) {
-        return <div className="container" style={{ paddingTop: '100px' }}>Loading...</div>;
+        return <div className="container" style={{ paddingTop: '100px' }}>Listing not found</div>;
     }
 
     return (
