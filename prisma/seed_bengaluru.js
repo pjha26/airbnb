@@ -228,6 +228,8 @@ async function main() {
                 location: hotel.neighborhood, // Use neighborhood as short location
                 rating: hotel.rating,
                 type: 'Hotel',
+                lat: hotel.lat,
+                lng: hotel.lng,
                 images: galleryImages,
                 amenities: hotel.amenities,
                 hostId: host.id,

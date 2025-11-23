@@ -26,6 +26,8 @@ model Listing {
   location     String
   rating       Float
   type         String
+  lat          Float?
+  lng          Float?
   images       String[]
   amenities    String[]
   hostId       String        @db.ObjectId

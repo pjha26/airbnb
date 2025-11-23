@@ -5,6 +5,8 @@ import BookingWidget from '@/components/Listing/BookingWidget';
 import prisma from '@/lib/prisma';
 import styles from './page.module.css';
 
+import MapWrapper from '@/components/Listing/MapWrapper';
+
 async function getListing(id) {
     try {
         const listing = await prisma.listing.findUnique({
@@ -30,7 +32,18 @@ export default async function ListingPage({ params }) {
         <div className={`container ${styles.pageContainer}`}>
             <ImageGallery images={listing.images} />
             <div className={styles.contentGrid}>
-                <ListingInfo listing={listing} />
+                <div className={styles.mainContent}>
+                    <ListingInfo listing={listing} />
+                    <div className={styles.divider}></div>
+                    <div className={styles.mapSection}>
+                        <h3>Where you'll be</h3>
+                        {listing.lat && listing.lng ? (
+                            <MapWrapper center={[listing.lat, listing.lng]} />
+                        ) : (
+                            <p>Location data not available</p>
+                        )}
+                    </div>
+                </div>
                 <BookingWidget listing={listing} />
             </div>
         </div>
