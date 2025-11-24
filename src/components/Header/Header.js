@@ -59,7 +59,7 @@ const Header = () => {
           <Link href="/" className={styles.logo}>
             <div style={{ position: 'relative', width: '120px', height: '40px' }}>
               <Image
-                src="/logo.jpg"
+                src="/logo.png"
                 alt="Ghumo"
                 fill
                 style={{ objectFit: 'contain', objectPosition: 'left' }}
@@ -124,28 +124,13 @@ const Header = () => {
                       <div className={styles.menuItem} onClick={handleSignUpClick}>Sign up</div>
                       <div className={styles.menuDivider}></div>
                       <div className={styles.menuItem}>Airbnb your home</div>
-                      <div className={styles.menuItem}>Help Center</div>
-                    </>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </motion.header>
-
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
-      <SignUpModal
-        isOpen={isSignUpOpen}
-        onClose={() => setIsSignUpOpen(false)}
-        onSwitchToLogin={() => {
-          setIsSignUpOpen(false);
-          setIsLoginOpen(true);
+                      setIsSignUpOpen(false);
+                      setIsLoginOpen(true);
         }}
       />
-    </>
-  );
+                    </>
+                  );
 };
 
-export default Header;
+                  export default Header;
 

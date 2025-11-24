@@ -1,8 +1,64 @@
-import React from 'react';
-import { Star, ChevronDown } from 'lucide-react';
+import React, { useState } from 'react';
+import { Star, ChevronDown, Loader2 } from 'lucide-react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import useAuthModal from '@/hooks/useAuthModal';
 import styles from './BookingWidget.module.css';
 
 const BookingWidget = ({ listing }) => {
+    const { data: session } = useSession();
+    const router = useRouter();
+    const authModal = useAuthModal();
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
+
+    // Mock dates for now - in a real app these would come from a date picker
+    const checkInDate = new Date('2023-10-22');
+    const checkOutDate = new Date('2023-10-27');
+    const totalPrice = listing.price * 5 + 2500 + 3500;
+
+    const handleReserve = async () => {
+        if (!session) {
+            authModal.onOpen();
+            return;
+        }
+
+        setIsLoading(true);
+        setError(null);
+
+        try {
+            const response = await fetch('/api/bookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    listingId: listing.id,
+                    startDate: checkInDate,
+                    endDate: checkOutDate,
+                    totalPrice: totalPrice,
+                }),
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.error || 'Failed to reserve');
+            }
+
+            setSuccess(true);
+            setTimeout(() => {
+                // router.push('/trips'); // Redirect to trips page if it existed
+                setSuccess(false);
+            }, 3000);
+
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className={styles.widgetContainer}>
             <div className={styles.widget}>
@@ -39,7 +95,28 @@ const BookingWidget = ({ listing }) => {
                     </div>
                 </div>
 
-                <button className={styles.reserveBtn}>Reserve</button>
+                <button
+                    className={styles.reserveBtn}
+                    onClick={handleReserve}
+                    disabled={isLoading || success}
+                    style={{
+                        backgroundColor: success ? '#4CAF50' : '',
+                        opacity: isLoading ? 0.7 : 1
+                    }}
+                >
+                    {isLoading ? (
+                        <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                            <Loader2 className={styles.spinner} size={20} />
+                            Processing...
+                        </span>
+                    ) : success ? (
+                        'Reserved!'
+                    ) : (
+                        'Reserve'
+                    )}
+                </button>
+
+                {error && <p style={{ color: 'red', marginTop: '10px', fontSize: '14px', textAlign: 'center' }}>{error}</p>}
 
                 <p className={styles.disclaimer}>You won't be charged yet</p>
 
@@ -60,7 +137,7 @@ const BookingWidget = ({ listing }) => {
 
                 <div className={styles.total}>
                     <span>Total before taxes</span>
-                    <span>₹{(listing.price * 5 + 2500 + 3500).toLocaleString('en-IN')}</span>
+                    <span>₹{totalPrice.toLocaleString('en-IN')}</span>
                 </div>
             </div>
         </div>
