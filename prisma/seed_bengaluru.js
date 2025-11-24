@@ -12,7 +12,10 @@ const bengaluruHotels = [
         lat: 12.9718,
         lng: 77.5946,
         images: [
-            "https://images.unsplash.com/photo-1613977257365-a65e67c4e52a?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1613977257365-a65e67c4e52a?auto=format&fit=crop&w=1400&q=80", // Exterior/Pool
+            "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1400&q=80", // Room
+            "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1400&q=80", // Dining
+            "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1400&q=80"  // Lobby
         ],
         amenities: ["WiFi", "Pool", "Spa", "Garden View", "Restaurant", "Bar"]
     },
@@ -27,7 +30,10 @@ const bengaluruHotels = [
         lat: 12.9712,
         lng: 77.6055,
         images: [
-            "https://images.unsplash.com/photo-1501117716987-c8e1ecb2101f?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1501117716987-c8e1ecb2101f?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["WiFi", "Pool", "Gym", "Restaurant", "Spa"]
     },
@@ -42,7 +48,10 @@ const bengaluruHotels = [
         lat: 12.9717,
         lng: 77.5930,
         images: [
-            "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1400&q=80"
+            "/images/itc_gardenia_new.png",
+            "https://images.unsplash.com/photo-1560200353-ce0a76b1d438?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1551918120-9739cb430c6d?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1618773928121-c32242e63f54?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["Pool", "Gym", "Spa", "Restaurant", "Eco-Friendly"]
     },
@@ -57,7 +66,10 @@ const bengaluruHotels = [
         lat: 12.9725,
         lng: 77.5969,
         images: [
-            "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1561501900-3701fa6a0864?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["Luxury Spa", "Pool", "City View", "Fine Dining"]
     },
@@ -72,7 +84,10 @@ const bengaluruHotels = [
         lat: 12.9719,
         lng: 77.6036,
         images: [
-            "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["WiFi", "Pool", "Restaurant", "Luxury Spa"]
     },
@@ -87,7 +102,10 @@ const bengaluruHotels = [
         lat: 13.0009,
         lng: 77.5691,
         images: [
-            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1571896349842-6e53ce41e86a?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["Pool", "Gym", "Spa", "Lake View", "Restaurant"]
     },
@@ -102,7 +120,10 @@ const bengaluruHotels = [
         lat: 12.9592,
         lng: 77.6433,
         images: [
-            "https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1559599238-0c76c6d3f2f6?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["Luxury Spa", "Pool", "Garden", "Fine Dining"]
     },
@@ -117,7 +138,10 @@ const bengaluruHotels = [
         lat: 12.9738,
         lng: 77.6143,
         images: [
-            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1590490360100-5d1c4b70a385?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["Lake View", "Pool", "Spa", "Restaurant"]
     },
@@ -132,7 +156,10 @@ const bengaluruHotels = [
         lat: 12.9751,
         lng: 77.6042,
         images: [
-            "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1501117716987-c8e1ecb2101f?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["WiFi", "Restaurant", "City Center"]
     },
@@ -147,7 +174,10 @@ const bengaluruHotels = [
         lat: 12.9539,
         lng: 77.7011,
         images: [
-            "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1586611292717-3ce3ac1a50da?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1618773928121-c32242e63f54?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1559599238-0c76c6d3f2f6?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["WiFi", "Gym", "Pool", "Restaurant"]
     },
@@ -162,7 +192,10 @@ const bengaluruHotels = [
         lat: 12.9699,
         lng: 77.7521,
         images: [
-            "https://images.unsplash.com/photo-1586611292717-3ce3ac1a50da?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1586611292717-3ce3ac1a50da?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["WiFi", "Pool", "Restaurant", "Work Lounge"]
     },
@@ -177,7 +210,10 @@ const bengaluruHotels = [
         lat: 13.0358,
         lng: 77.6097,
         images: [
-            "https://images.unsplash.com/photo-1618773928121-c32242e63f54?auto=format&fit=crop&w=1400&q=80"
+            "https://images.unsplash.com/photo-1618773928121-c32242e63f54?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1400&q=80",
+            "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1400&q=80"
         ],
         amenities: ["Lake View", "Pool", "Gym", "Restaurant"]
     }
@@ -217,9 +253,6 @@ async function main() {
         Distance from Airport: ${hotel.distanceFromAirport_km} km.
         Address: ${hotel.address}`;
 
-        // Duplicate images to have a gallery
-        const galleryImages = [...hotel.images, ...hotel.images, ...hotel.images].slice(0, 5);
-
         const createdListing = await prisma.listing.create({
             data: {
                 title: hotel.name,
@@ -230,7 +263,7 @@ async function main() {
                 type: 'Hotel',
                 lat: hotel.lat,
                 lng: hotel.lng,
-                images: galleryImages,
+                images: hotel.images, // Use the unique images array
                 amenities: hotel.amenities,
                 hostId: host.id,
             },

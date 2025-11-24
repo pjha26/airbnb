@@ -6,6 +6,8 @@ const mockListings = [
         price: 350,
         rating: 4.9,
         type: 'Amazing pools',
+        lat: 34.0259,
+        lng: -118.7798,
         images: [
             'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
@@ -20,6 +22,8 @@ const mockListings = [
         price: 220,
         rating: 4.8,
         type: 'Cabins',
+        lat: 39.1911,
+        lng: -106.8175,
         images: [
             'https://images.unsplash.com/photo-1449156493391-d2cfa28e468b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             'https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
@@ -33,6 +37,8 @@ const mockListings = [
         price: 180,
         rating: 4.7,
         type: 'Iconic cities',
+        lat: 40.7128,
+        lng: -74.0060,
         images: [
             'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
@@ -46,6 +52,8 @@ const mockListings = [
         price: 120,
         rating: 4.95,
         type: 'Tropical',
+        lat: -8.4095,
+        lng: 115.1889,
         images: [
             'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
@@ -59,6 +67,8 @@ const mockListings = [
         price: 450,
         rating: 4.85,
         type: 'Amazing pools',
+        lat: 20.7984,
+        lng: -156.3319,
         images: [
             'https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             'https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
@@ -72,12 +82,29 @@ const mockListings = [
         price: 600,
         rating: 5.0,
         type: 'Castles',
+        lat: 55.9533,
+        lng: -3.1883,
         images: [
             'https://images.unsplash.com/photo-1533154683836-84ea7a0bc310?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             'https://images.unsplash.com/photo-1585543805890-6051f7829f98?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         ],
         amenities: ['History', 'Garden', 'WiFi'],
         description: 'Live like royalty in this historic castle. Explore the grounds and enjoy the rich history of the area.',
+    },
+    {
+        title: 'Residency Hotel',
+        location: 'Mumbai, India',
+        price: 150,
+        rating: 4.6,
+        type: 'Iconic cities',
+        lat: 19.0760,
+        lng: 72.8777,
+        images: [
+            'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        ],
+        amenities: ['City View', 'WiFi', 'Restaurant', 'Gym'],
+        description: 'Enjoy a luxurious stay at the Residency Hotel in the heart of Mumbai. Close to business districts and tourist attractions.',
     },
 ];
 
@@ -111,6 +138,8 @@ async function main() {
                 location: listing.location,
                 rating: listing.rating,
                 type: listing.type || 'Entire home', // Default if missing
+                lat: listing.lat,
+                lng: listing.lng,
                 images: listing.images,
                 amenities: listing.amenities,
                 hostId: host.id,

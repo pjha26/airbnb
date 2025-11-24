@@ -19,7 +19,7 @@ const Map = ({ center }) => {
     const position = center || [12.9716, 77.5946];
 
     return (
-        <div style={{ height: '400px', width: '100%', borderRadius: '12px', overflow: 'hidden', marginTop: '24px', zIndex: 0 }}>
+        <div style={{ height: '400px', width: '100%', borderRadius: '12px', overflow: 'hidden', marginTop: '24px', position: 'relative', background: '#e0e0e0' }}>
             <MapContainer center={position} zoom={15} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -2,13 +2,13 @@
 
 import dynamic from 'next/dynamic';
 
-const Map = dynamic(() => import('./Map'), {
+const GoogleMap = dynamic(() => import('./GoogleMap'), {
     ssr: false,
     loading: () => <div style={{ height: '400px', width: '100%', background: '#f0f0f0', borderRadius: '12px', marginTop: '24px' }}>Loading Map...</div>
 });
 
 const MapWrapper = ({ center }) => {
-    return <Map center={center} />;
+    return <GoogleMap center={center} />;
 };
 
 export default MapWrapper;

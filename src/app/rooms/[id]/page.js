@@ -35,6 +35,11 @@ export default async function ListingPage({ params }) {
                 <div className={styles.mainContent}>
                     <ListingInfo listing={listing} />
                     <div className={styles.divider}></div>
+                    <div style={{ padding: '10px', background: '#ffebee', border: '1px solid red', marginBottom: '20px' }}>
+                        <p><strong>Debug Info:</strong></p>
+                        <p>Lat: {listing.lat}</p>
+                        <p>Lng: {listing.lng}</p>
+                    </div>
                     <div className={styles.mapSection}>
                         <h3>Where you'll be</h3>
                         {listing.lat && listing.lng ? (
