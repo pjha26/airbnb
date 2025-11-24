@@ -11,7 +11,6 @@ const BookingWidget = ({ listing }) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(false);
     const [showGuestPicker, setShowGuestPicker] = useState(false);
     const [guests, setGuests] = useState({
         adults: 1,
@@ -53,34 +52,35 @@ const BookingWidget = ({ listing }) => {
         setError(null);
 
         try {
-            const response = await fetch('/api/bookings', {
+            const response = await fetch('/api/create-checkout-session', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     listingId: listing.id,
+                    listingTitle: listing.title,
                     startDate: checkInDate.toISOString(),
                     endDate: checkOutDate.toISOString(),
                     totalPrice: totalPrice,
-                    guests: totalGuests,
+                    guests: guests,
+                    nights: nights,
                 }),
             });
 
             if (!response.ok) {
                 const data = await response.json();
-                throw new Error(data.details || data.error || 'Failed to reserve');
+                throw new Error(data.error || 'Failed to create checkout session');
             }
 
-            setSuccess(true);
-            setTimeout(() => {
-                router.push('/trips'); // Redirect to trips page
-            }, 2000);
+            const { url } = await response.json();
+
+            // Redirect to Stripe Checkout
+            window.location.href = url;
 
         } catch (err) {
-            console.error('Booking error:', err);
+            console.error('Checkout error:', err);
             setError(err.message);
-        } finally {
             setIsLoading(false);
         }
     };
@@ -199,19 +199,16 @@ const BookingWidget = ({ listing }) => {
                 <button
                     className={styles.reserveBtn}
                     onClick={handleReserve}
-                    disabled={isLoading || success}
+                    disabled={isLoading}
                     style={{
-                        backgroundColor: success ? '#4CAF50' : '',
                         opacity: isLoading ? 0.7 : 1
                     }}
                 >
                     {isLoading ? (
                         <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                             <Loader2 className={styles.spinner} size={20} />
-                            Processing...
+                            Redirecting to payment...
                         </span>
-                    ) : success ? (
-                        'Reserved!'
                     ) : (
                         'Reserve'
                     )}
@@ -237,7 +234,7 @@ const BookingWidget = ({ listing }) => {
                         <span>₹2,500</span>
                     </div>
                     <div className={styles.row}>
-                        <span className={styles.underline}>Airbnb service fee</span>
+                        <span className={styles.underline}>Service fee</span>
                         <span>₹3,500</span>
                     </div>
                 </div>
