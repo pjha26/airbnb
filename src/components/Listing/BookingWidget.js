@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Star, ChevronDown, Loader2 } from 'lucide-react';
 import { useSession } from 'next-auth/react';

@@ -124,13 +124,27 @@ const Header = () => {
                       <div className={styles.menuItem} onClick={handleSignUpClick}>Sign up</div>
                       <div className={styles.menuDivider}></div>
                       <div className={styles.menuItem}>Airbnb your home</div>
-                      setIsSignUpOpen(false);
-                      setIsLoginOpen(true);
+                      <div className={styles.menuItem}>Help Center</div>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </motion.header>
+
+      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+      <SignUpModal
+        isOpen={isSignUpOpen}
+        onClose={() => setIsSignUpOpen(false)}
+        onSwitchToLogin={() => {
+          setIsSignUpOpen(false);
+          setIsLoginOpen(true);
         }}
       />
-                    </>
-                  );
+    </>
+  );
 };
 
-                  export default Header;
-
+export default Header;
