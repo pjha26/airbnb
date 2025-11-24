@@ -55,8 +55,8 @@ const mockListings = [
         lat: -8.4095,
         lng: 115.1889,
         images: [
+            'https://images.unsplash.com/photo-1488415032361-b7e238421f1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         ],
         amenities: ['Nature', 'WiFi', 'Breakfast'],
         description: 'Experience nature like never before in this secluded treehouse. Surrounded by lush greenery and wildlife.',
@@ -128,6 +128,10 @@ async function main() {
     });
 
     console.log(`Created user with id: ${host.id}`);
+
+    // Clear existing listings
+    await prisma.listing.deleteMany({});
+    console.log('Cleared existing listings');
 
     for (const listing of mockListings) {
         const createdListing = await prisma.listing.create({
