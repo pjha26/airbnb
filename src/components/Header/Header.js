@@ -4,12 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Search, Menu, User, Globe } from 'lucide-react';
 import styles from './Header.module.css';
-import { useUser } from '@clerk/nextjs';
+import { useUser, useClerk } from '@clerk/nextjs';
 import { useState, useRef, useEffect } from 'react';
 import ThemeToggle from '../ThemeToggle';
 
 export default function Header() {
   const { isSignedIn, user } = useUser();
+  const { signOut } = useClerk();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -25,6 +26,11 @@ export default function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef]);
+
+  const handleSignOut = async () => {
+    await signOut();
+    window.location.href = '/';
+  };
 
   return (
     <header className={styles.header}>
@@ -74,17 +80,17 @@ export default function Header() {
                     <>
                       <div className={styles.menuItem} style={{ fontWeight: 600 }}>Messages</div>
                       <div className={styles.menuItem} style={{ fontWeight: 600 }}>Notifications</div>
-                      <Link href="/trips" className={styles.menuItem} style={{ fontWeight: 600, display: 'block' }}>My Trips</Link>
+                      <Link href="/trips" className={styles.menuItem} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>My Trips</Link>
                       <div className={styles.menuItem} style={{ fontWeight: 600 }}>Wishlists</div>
                       <div style={{ height: '1px', backgroundColor: '#ddd', margin: '8px 0' }}></div>
                       <div className={styles.menuItem}>Account</div>
                       <div className={styles.menuItem}>Help Center</div>
-                      <div className={styles.menuItem} onClick={() => window.location.href = '/sign-in'}>Log out</div>
+                      <div className={styles.menuItem} onClick={handleSignOut}>Log out</div>
                     </>
                   ) : (
                     <>
-                      <Link href="/sign-up" className={styles.menuItem} style={{ fontWeight: 600, display: 'block' }}>Sign up</Link>
-                      <Link href="/sign-in" className={styles.menuItem} style={{ display: 'block' }}>Log in</Link>
+                      <Link href="/sign-up" className={styles.menuItem} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>Sign up</Link>
+                      <Link href="/sign-in" className={styles.menuItem} style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>Log in</Link>
                       <div style={{ height: '1px', backgroundColor: '#ddd', margin: '8px 0' }}></div>
                       <div className={styles.menuItem}>Ghumo your home</div>
                       <div className={styles.menuItem}>Help Center</div>

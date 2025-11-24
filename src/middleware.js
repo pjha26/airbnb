@@ -1,16 +1,16 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 const isProtectedRoute = createRouteMatcher([
     '/trips(.*)',
-    '/reservations(.*)',
-    '/wishlists(.*)',
-    '/account(.*)',
-    '/api/bookings(.*)'
-]);
+    '/api/bookings(.*)',
+    '/api/create-checkout-session(.*)',
+])
 
-export default clerkMiddleware((auth, req) => {
-    if (isProtectedRoute(req)) auth().protect();
-});
+export default clerkMiddleware(async (auth, req) => {
+    if (isProtectedRoute(req)) {
+        await auth.protect()
+    }
+})
 
 export const config = {
     matcher: [
@@ -19,4 +19,4 @@ export const config = {
         // Always run for API routes
         '/(api|trpc)(.*)',
     ],
-};
+}

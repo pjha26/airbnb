@@ -28,21 +28,20 @@ const BookingWidget = ({ listing }) => {
     const cleaningFee = 2500;
     const serviceFee = 3500;
     const totalGuests = guests.adults + guests.children;
-    const guestSurcharge = totalGuests > 2 ? (totalGuests - 2) * 500 * nights : 0; // ₹500 per extra guest per night
+    const guestSurcharge = totalGuests > 2 ? (totalGuests - 2) * 500 * nights : 0;
     const totalPrice = basePrice + cleaningFee + serviceFee + guestSurcharge;
 
     const handleGuestChange = (type, operation) => {
         setGuests(prev => {
             const newValue = operation === 'increment' ? prev[type] + 1 : Math.max(0, prev[type] - 1);
-
-            // Ensure at least 1 adult
             if (type === 'adults' && newValue < 1) return prev;
-
             return { ...prev, [type]: newValue };
         });
     };
 
     const handleReserve = async () => {
+        console.log('Reserve clicked, isSignedIn:', isSignedIn);
+
         if (!isSignedIn) {
             router.push('/sign-in');
             return;
@@ -68,12 +67,16 @@ const BookingWidget = ({ listing }) => {
                 }),
             });
 
+            console.log('Response status:', response.status);
+
             if (!response.ok) {
                 const data = await response.json();
+                console.error('API Error:', data);
                 throw new Error(data.error || 'Failed to create checkout session');
             }
 
             const { url } = await response.json();
+            console.log('Checkout URL received:', url);
 
             // Redirect to Stripe Checkout
             window.location.href = url;
