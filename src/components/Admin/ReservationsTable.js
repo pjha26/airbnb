@@ -1,23 +1,9 @@
+'use client';
+
 import React from 'react';
-import prisma from '@/lib/prisma';
 import DataTable from '@/components/Admin/DataTable';
 
-async function getReservations() {
-    const reservations = await prisma.reservation.findMany({
-        include: {
-            listing: true,
-            user: true,
-        },
-        orderBy: {
-            createdAt: 'desc',
-        },
-    });
-    return reservations;
-}
-
-export default async function AdminReservationsPage() {
-    const reservations = await getReservations();
-
+export default function ReservationsTable({ reservations }) {
     const columns = [
         {
             header: 'Listing',
@@ -67,14 +53,5 @@ export default async function AdminReservationsPage() {
         },
     ];
 
-    return (
-        <div className="space-y-6">
-            <div>
-                <h1 className="text-2xl font-bold text-white">Reservations</h1>
-                <p className="text-gray-400">View all booking history</p>
-            </div>
-
-            <DataTable columns={columns} data={reservations} searchKey="listing.title" />
-        </div>
-    );
+    return <DataTable columns={columns} data={reservations} searchKey="listing.title" />;
 }

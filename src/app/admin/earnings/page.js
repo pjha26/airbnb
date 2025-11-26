@@ -43,18 +43,18 @@ export default async function AdminEarningsPage() {
     return (
         <div className="space-y-8">
             <div>
-                <h1 className="text-2xl font-bold text-gray-900">Earnings</h1>
-                <p className="text-gray-500">Revenue analytics and overview</p>
+                <h1 className="text-2xl font-bold text-white">Earnings</h1>
+                <p className="text-gray-400">Revenue analytics and overview</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center gap-4">
-                    <div className="p-4 rounded-lg bg-green-100 text-green-600">
+                <div className="bg-[#1E1E1E] p-6 rounded-xl shadow-lg border border-[#333333] flex items-center gap-4">
+                    <div className="p-4 rounded-lg bg-green-900/30 text-green-400">
                         <DollarSign size={24} />
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 font-medium">Total Revenue</p>
-                        <h3 className="text-2xl font-bold text-gray-900">₹{totalRevenue.toLocaleString('en-IN')}</h3>
+                        <p className="text-sm text-gray-400 font-medium">Total Revenue</p>
+                        <h3 className="text-2xl font-bold text-white">₹{totalRevenue.toLocaleString('en-IN')}</h3>
                     </div>
                 </div>
             </div>

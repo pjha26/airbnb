@@ -1,21 +1,11 @@
+'use client';
+
 import React from 'react';
-import prisma from '@/lib/prisma';
 import DataTable from '@/components/Admin/DataTable';
 import ListingActions from '@/components/Admin/ListingActions';
 import Image from 'next/image';
 
-async function getListings() {
-    const listings = await prisma.listing.findMany({
-        orderBy: {
-            id: 'desc', // Using ID as proxy for creation time since createdAt might not be on Listing
-        },
-    });
-    return listings;
-}
-
-export default async function AdminListingsPage() {
-    const listings = await getListings();
-
+export default function ListingsTable({ listings }) {
     const columns = [
         {
             header: 'Image',
@@ -51,19 +41,5 @@ export default async function AdminListingsPage() {
         },
     ];
 
-    return (
-        <div className="space-y-6">
-            <div className="flex justify-between items-center">
-                <div>
-                    <h1 className="text-2xl font-bold text-white">Listings</h1>
-                    <p className="text-gray-400">Manage all property listings</p>
-                </div>
-                <button className="bg-[#FF385C] text-white px-4 py-2 rounded-lg font-medium hover:brightness-95 transition-all shadow-lg shadow-red-900/20">
-                    Create Listing
-                </button>
-            </div>
-
-            <DataTable columns={columns} data={listings} searchKey="title" />
-        </div>
-    );
+    return <DataTable columns={columns} data={listings} searchKey="title" />;
 }
