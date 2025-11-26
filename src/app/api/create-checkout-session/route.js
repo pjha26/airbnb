@@ -11,6 +11,7 @@ export async function POST(req) {
     try {
         // Clerk Auth
         const { userId } = await auth();
+        console.log("User ID from auth():", userId);
 
         if (!userId) {
             return NextResponse.json(
@@ -74,12 +75,17 @@ export async function POST(req) {
         });
 
     } catch (error) {
-        console.error("CHECKOUT SESSION ERROR:", error);
+        console.error("CHECKOUT SESSION ERROR:");
+        console.error("Error message:", error.message);
+        console.error("Error name:", error.name);
+        console.error("Full error:", error);
+        console.error("Stack trace:", error.stack);
 
         // Prevent HTML error leaking to frontend
         return NextResponse.json(
             {
-                error: error.message || "Failed to create Stripe session",
+                error: error.message || error.toString() || "Failed to create Stripe session",
+                details: process.env.NODE_ENV === 'development' ? error.stack : undefined
             },
             { status: 500 }
         );

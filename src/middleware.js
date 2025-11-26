@@ -1,16 +1,8 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { clerkMiddleware } from '@clerk/nextjs/server'
 
-const isProtectedRoute = createRouteMatcher([
-    '/trips(.*)',
-    '/api/bookings(.*)',
-])
-
-export default clerkMiddleware(async (auth, req) => {
-    if (isProtectedRoute(req)) {
-        const authObj = await auth()
-        authObj.protect()
-    }
-})
+// Use default Clerk middleware without custom protection
+// API routes handle their own authentication
+export default clerkMiddleware()
 
 export const config = {
     matcher: [
