@@ -1,15 +1,16 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Star, ChevronDown, ChevronUp, Loader2, Plus, Minus, Calendar as CalendarIcon } from 'lucide-react';
+import { Star, ChevronDown, ChevronUp, Loader2, Plus, Minus } from 'lucide-react';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import { DateRange } from 'react-date-range';
-import { format, differenceInDays, addDays } from 'date-fns';
+import { format, addDays } from 'date-fns';
+import { calculateTotalPrice } from '@/lib/pricing';
 import styles from './BookingWidget.module.css';
 
-import 'react-date-range/dist/styles.css'; // main css file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 
 const BookingWidget = ({ listing }) => {
     const { isSignedIn, user } = useUser();
@@ -52,9 +53,11 @@ const BookingWidget = ({ listing }) => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    // Calculate nights and prices
-    const nights = differenceInDays(dateRange[0].endDate, dateRange[0].startDate);
-    const basePrice = listing.price * nights;
+    // Calculate dynamic prices
+    const pricingData = calculateTotalPrice(listing, dateRange[0].startDate, dateRange[0].endDate);
+    const nights = pricingData.nights;
+    const basePrice = pricingData.totalPrice;
+    const averagePerNight = pricingData.averagePerNight;
     const cleaningFee = 2500;
     const serviceFee = 3500;
     const totalGuests = guests.adults + guests.children;
@@ -119,7 +122,7 @@ const BookingWidget = ({ listing }) => {
             <div className={styles.widget}>
                 <div className={styles.header}>
                     <div>
-                        <span className={styles.price}>₹{listing.price.toLocaleString('en-IN')}</span>
+                        <span className={styles.price}>₹{averagePerNight.toLocaleString('en-IN')}</span>
                         <span className={styles.night}> night</span>
                     </div>
                     <div className={styles.rating}>
@@ -245,7 +248,7 @@ const BookingWidget = ({ listing }) => {
 
                 <div className={styles.priceBreakdown}>
                     <div className={styles.row}>
-                        <span className={styles.underline}>₹{listing.price.toLocaleString('en-IN')} x {nights} nights</span>
+                        <span className={styles.underline}>₹{averagePerNight.toLocaleString('en-IN')} x {nights} nights</span>
                         <span>₹{basePrice.toLocaleString('en-IN')}</span>
                     </div>
                     {guestSurcharge > 0 && (

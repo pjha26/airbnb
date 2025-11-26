@@ -30,6 +30,10 @@ model Listing {
   title        String
   description  String
   price        Float
+  basePrice    Float?
+  weekendMultiplier Float @default(1.25)
+  seasonalMultiplier Float @default(1.0)
+  demandMultiplier Float @default(1.0)
   location     String
   rating       Float
   type         String
