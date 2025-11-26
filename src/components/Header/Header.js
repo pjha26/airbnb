@@ -83,7 +83,7 @@ export default function Header() {
                       <Link href="/trips" className={styles.menuItem} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>My Trips</Link>
                       <Link href="/favorites" className={styles.menuItem} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>Favorites</Link>
                       <div style={{ height: '1px', backgroundColor: '#ddd', margin: '8px 0' }}></div>
-                      <div className={styles.menuItem}>Account</div>
+                      <Link href="/profile" className={styles.menuItem} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>Account</Link>
                       <div className={styles.menuItem}>Help Center</div>
                       <div className={styles.menuItem} onClick={handleSignOut}>Log out</div>
                     </>
