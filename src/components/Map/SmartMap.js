@@ -44,6 +44,11 @@ export default function SmartMap({ listings = [] }) {
                     Map Layers
                 </h3>
 
+                <div className={styles.infoBox}>
+                    <p>💡 Click <span style={{ color: '#FF385C', fontWeight: 'bold' }}>RED markers</span> for listings</p>
+                    <p>👁️ Then click "VR Preview" button</p>
+                </div>
+
                 <div className={styles.layerButtons}>
                     <button
                         className={`${styles.layerBtn} ${activeLayers.heatmap ? styles.active : ''}`}
