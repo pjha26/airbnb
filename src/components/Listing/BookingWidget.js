@@ -68,18 +68,31 @@ const BookingWidget = ({ listing }) => {
             });
 
             console.log('Response status:', response.status);
+            console.log('Response content-type:', response.headers.get('content-type'));
+
+            // Check if response is JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                console.error('Non-JSON response:', text.substring(0, 500));
+                throw new Error('Server returned an error. Please check your Stripe configuration.');
+            }
+
+            const data = await response.json();
 
             if (!response.ok) {
-                const data = await response.json();
                 console.error('API Error:', data);
                 throw new Error(data.error || 'Failed to create checkout session');
             }
 
-            const { url } = await response.json();
-            console.log('Checkout URL received:', url);
+            console.log('Checkout URL received:', data.url);
 
             // Redirect to Stripe Checkout
-            window.location.href = url;
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                throw new Error('No checkout URL received from server');
+            }
 
         } catch (err) {
             console.error('Checkout error:', err);
