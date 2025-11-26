@@ -1,5 +1,6 @@
 ﻿import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { currentUser } from '@clerk/nextjs/server';
+import prisma from '@/lib/prisma';
 
 export async function POST(req) {
     console.log('==========================');
@@ -10,15 +11,36 @@ export async function POST(req) {
 
     try {
         // Clerk Auth
-        const { userId } = await auth();
-        console.log("User ID from auth():", userId);
+        const user = await currentUser();
 
-        if (!userId) {
+        if (!user || !user.emailAddresses?.[0]?.emailAddress) {
             return NextResponse.json(
                 { error: "You must be signed in to make a reservation." },
                 { status: 401 }
             );
         }
+
+        const email = user.emailAddresses[0].emailAddress;
+        console.log("User email:", email);
+
+        // Find or create MongoDB user
+        let dbUser = await prisma.user.findUnique({
+            where: { email }
+        });
+
+        if (!dbUser) {
+            console.log("Creating new MongoDB user for", email);
+            dbUser = await prisma.user.create({
+                data: {
+                    email,
+                    name: `${user.firstName || ''} ${user.lastName || ''}`.trim() || 'Guest',
+                    image: user.imageUrl,
+                }
+            });
+        }
+
+        const userId = dbUser.id;
+        console.log("MongoDB User ID:", userId);
 
         // Parse body safely
         const body = await req.json();

@@ -27,8 +27,12 @@ export default async function Home() {
       <CategoryBar />
       <div className={`container ${styles.gridContainer}`}>
         <div className={styles.grid}>
-          {listings.map((listing) => (
-            <ListingCard key={listing.id} listing={listing} />
+          {listings.map((listing, index) => (
+            <ListingCard
+              key={listing.id}
+              listing={listing}
+              priority={index < 4}
+            />
           ))}
         </div>
       </div>

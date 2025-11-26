@@ -7,7 +7,7 @@ import { Star, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import styles from './ListingCard.module.css';
 
-const ListingCard = ({ listing }) => {
+const ListingCard = ({ listing, priority = false }) => {
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -25,7 +25,8 @@ const ListingCard = ({ listing }) => {
                             className={styles.image}
                             style={{ objectFit: 'cover' }}
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            loading="lazy"
+                            loading={priority ? "eager" : "lazy"}
+                            priority={priority}
                         />
                     </div>
                     <button className={styles.favoriteBtn}>

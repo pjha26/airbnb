@@ -47,6 +47,22 @@ body {
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+/* Hardware acceleration for smoother animations */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* optimize animations */
+.btn-primary,
+button,
+a {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  /* Trigger GPU acceleration */
 }
 
 a {
