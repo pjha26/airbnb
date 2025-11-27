@@ -82,18 +82,18 @@ export default function Header({ currentUser }) {
                     <>
                       <div className={styles.menuItem} style={{ fontWeight: 600 }}>Messages</div>
                       <div className={styles.menuItem} style={{ fontWeight: 600 }}>Notifications</div>
-                      <Link href="/trips" className={styles.menuItem} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>My Trips</Link>
-                      <Link href="/favorites" className={styles.menuItem} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>Favorites</Link>
-                      <Link href="/map" className={styles.menuItem} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>🗺️ Smart Map</Link>
+                      <Link href="/trips" className={styles.menuItem} onClick={() => setIsOpen(false)} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>My Trips</Link>
+                      <Link href="/favorites" className={styles.menuItem} onClick={() => setIsOpen(false)} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>Favorites</Link>
+                      <Link href="/map" className={styles.menuItem} onClick={() => setIsOpen(false)} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>🗺️ Smart Map</Link>
                       <div style={{ height: '1px', backgroundColor: '#ddd', margin: '8px 0' }}></div>
-                      <Link href="/profile" className={styles.menuItem} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>Account</Link>
+                      <Link href="/profile" className={styles.menuItem} onClick={() => setIsOpen(false)} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>Account</Link>
                       <div className={styles.menuItem}>Help Center</div>
                       <div className={styles.menuItem} onClick={handleSignOut}>Log out</div>
                     </>
                   ) : (
                     <>
-                      <Link href="/sign-up" className={styles.menuItem} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>Sign up</Link>
-                      <Link href="/sign-in" className={styles.menuItem} style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>Log in</Link>
+                      <Link href="/sign-up" className={styles.menuItem} onClick={() => setIsOpen(false)} style={{ fontWeight: 600, display: 'block', textDecoration: 'none', color: 'inherit' }}>Sign up</Link>
+                      <Link href="/sign-in" className={styles.menuItem} onClick={() => setIsOpen(false)} style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>Log in</Link>
                       <div style={{ height: '1px', backgroundColor: '#ddd', margin: '8px 0' }}></div>
                       <div className={styles.menuItem}>Ghumo your home</div>
                       <div className={styles.menuItem}>Help Center</div>

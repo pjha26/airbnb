@@ -78,7 +78,7 @@ export default function PaymentSuccess() {
                             display: 'inline-block'
                         }}
                     >
-                        View My Trips
+                        View Trips & Receipt
                     </Link>
                     <Link
                         href="/"

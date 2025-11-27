@@ -41,6 +41,7 @@ model Listing {
   lng          Float?
   images       String[]
   amenities    String[]
+  tags         String[]      @default([]) // Location tags: "beach", "mountain", "city", "tropical", etc.
   maxGuests    Int           @default(2)
   
   // Work-from-Travel Score Fields

@@ -15,9 +15,22 @@ async function getUser() {
         }
 
         const email = user.emailAddresses[0].emailAddress;
-        const dbUser = await prisma.user.findUnique({
+        let dbUser = await prisma.user.findUnique({
             where: { email },
         });
+
+        // If user exists in Clerk but not in DB (e.g. after seed reset), create them
+        if (!dbUser) {
+            console.log('User missing in DB, recreating...');
+            dbUser = await prisma.user.create({
+                data: {
+                    email,
+                    name: `${user.firstName || ''} ${user.lastName || ''}`.trim() || 'User',
+                    image: user.imageUrl,
+                    // id: user.id // REMOVED: Let Prisma generate a valid MongoDB ObjectID
+                }
+            });
+        }
 
         return dbUser;
     } catch (error) {

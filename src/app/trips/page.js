@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Calendar, MapPin, DollarSign } from 'lucide-react';
+import { Calendar, MapPin, DollarSign, Download } from 'lucide-react';
 import styles from './trips.module.css';
+import { generateReceiptPDF } from '@/utils/pdfGenerator';
 
 export default function TripsPage() {
     const { isSignedIn, isLoaded } = useUser();
@@ -122,6 +123,26 @@ export default function TripsPage() {
                                         className={styles.viewBtn}
                                     >
                                         View Listing
+                                    </button>
+                                    <button
+                                        onClick={() => generateReceiptPDF(booking)}
+                                        className={styles.receiptBtn}
+                                        style={{
+                                            padding: '8px 16px',
+                                            border: '1px solid #ddd',
+                                            borderRadius: '8px',
+                                            background: 'white',
+                                            color: '#333',
+                                            fontWeight: '600',
+                                            cursor: 'pointer',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '6px',
+                                            fontSize: '14px'
+                                        }}
+                                    >
+                                        <Download size={14} />
+                                        Receipt
                                     </button>
                                 </div>
                             </div>

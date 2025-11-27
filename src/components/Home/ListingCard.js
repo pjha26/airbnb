@@ -85,24 +85,24 @@ const ListingCard = ({ listing, priority = false }) => {
 
                         {/* Advanced Score Badges */}
                         <div className="absolute bottom-3 left-3 flex gap-1 flex-wrap">
-                            {listing.workTravelScore >= 8 && (
+                            {(listing.workTravelScore ?? 0) >= 8 && (
                                 <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded-md font-medium shadow-sm flex items-center gap-1">
-                                    💼 {listing.workTravelScore}
+                                    💼 {listing.workTravelScore?.toFixed(1)}
                                 </span>
                             )}
-                            {listing.petFriendlyScore >= 8 && (
+                            {(listing.petFriendlyScore ?? 0) >= 8 && (
                                 <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-md font-medium shadow-sm flex items-center gap-1">
-                                    🐾 {listing.petFriendlyScore}
+                                    🐾 {listing.petFriendlyScore?.toFixed(1)}
                                 </span>
                             )}
-                            {listing.romanticScore >= 8 && (
+                            {(listing.romanticScore ?? 0) >= 8 && (
                                 <span className="bg-pink-500 text-white text-xs px-2 py-1 rounded-md font-medium shadow-sm flex items-center gap-1">
-                                    💕 {listing.romanticScore}
+                                    💕 {listing.romanticScore?.toFixed(1)}
                                 </span>
                             )}
-                            {listing.adventureScore >= 8 && (
+                            {(listing.adventureScore ?? 0) >= 8 && (
                                 <span className="bg-green-600 text-white text-xs px-2 py-1 rounded-md font-medium shadow-sm flex items-center gap-1">
-                                    🏔️ {listing.adventureScore}
+                                    🏔️ {listing.adventureScore?.toFixed(1)}
                                 </span>
                             )}
                         </div>

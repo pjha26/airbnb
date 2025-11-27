@@ -25,12 +25,13 @@ export async function GET(request) {
         // Build dynamic Prisma query
         const where = {};
 
-        // Search query (title, description, location)
+        // Search query (title, description, location, tags)
         if (query) {
             where.OR = [
                 { title: { contains: query, mode: 'insensitive' } },
                 { description: { contains: query, mode: 'insensitive' } },
                 { location: { contains: query, mode: 'insensitive' } },
+                { tags: { hasSome: [query.toLowerCase()] } }, // Search in tags array
             ];
         }
 
