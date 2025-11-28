@@ -106,12 +106,14 @@ const Hero = () => {
                                                 <AnimatedButton
                                                     onClick={() => router.push('/sign-up')}
                                                     variant="primary"
+                                                    magnetic
                                                 >
                                                     Sign Up
                                                 </AnimatedButton>
                                                 <AnimatedButton
                                                     onClick={() => router.push('/sign-in')}
                                                     variant="secondary"
+                                                    magnetic
                                                 >
                                                     Log In
                                                 </AnimatedButton>
@@ -121,6 +123,7 @@ const Hero = () => {
                                             <AnimatedButton
                                                 onClick={handleAction}
                                                 variant="primary"
+                                                magnetic
                                             >
                                                 Explore Now
                                             </AnimatedButton>

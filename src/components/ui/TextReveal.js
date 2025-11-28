@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
  * TextReveal Component
  * Animates text with a word-by-word reveal effect
  * Based on Skiper UI free text animation patterns
+ * Fixed to prevent text overlapping issues
  */
 export const TextReveal = ({
     text,
@@ -55,13 +56,20 @@ export const TextReveal = ({
             variants={container}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className={cn("flex flex-wrap", className)}
+            className={cn(className)}
+            style={{
+                display: 'block',
+                lineHeight: '1.2'
+            }}
         >
             {words.map((word, index) => (
                 <motion.span
-                    key={index}
+                    key={`${word}-${index}`}
                     variants={child}
-                    className="mr-2"
+                    style={{
+                        display: 'inline-block',
+                        marginRight: '0.3em'
+                    }}
                 >
                     {word}
                 </motion.span>

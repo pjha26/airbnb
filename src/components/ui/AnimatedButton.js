@@ -3,20 +3,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import MagneticButton from './MagneticButton';
 
 /**
  * AnimatedButton Component
  * Enhanced button with smooth hover animations
  * Based on Skiper UI free button patterns
+ * Now with optional magnetic effect
  */
 export const AnimatedButton = ({
     children,
     className,
     onClick,
     variant = 'primary', // 'primary' or 'secondary'
+    magnetic = false, // Enable magnetic cursor effect
     ...props
 }) => {
-    return (
+    const buttonContent = (
         <motion.button
             onClick={onClick}
             className={cn(
@@ -54,6 +57,17 @@ export const AnimatedButton = ({
             />
         </motion.button>
     );
+
+    // Wrap with magnetic effect if enabled
+    if (magnetic) {
+        return (
+            <MagneticButton strength={0.25} range={60}>
+                {buttonContent}
+            </MagneticButton>
+        );
+    }
+
+    return buttonContent;
 };
 
 export default AnimatedButton;

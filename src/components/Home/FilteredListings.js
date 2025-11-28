@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { SlidersHorizontal } from 'lucide-react';
 import { useFilterStore } from '@/store/filterStore';
 import ListingCard from '@/components/Home/ListingCard';
+import SkeletonCard from '@/components/ui/SkeletonCard';
 import SearchBar from '@/components/Filters/SearchBar';
 import FilterModal from '@/components/Filters/FilterModal';
 import styles from './FilteredListings.module.css';
@@ -93,7 +94,13 @@ export default function FilteredListings({ initialListings }) {
             </div>
 
             <div className={`container ${styles.gridContainer}`}>
-                {loading && <div className={styles.loading}>Loading...</div>}
+                {loading && (
+                    <div className={styles.grid}>
+                        {[...Array(6)].map((_, index) => (
+                            <SkeletonCard key={index} />
+                        ))}
+                    </div>
+                )}
 
                 {!loading && listings.length === 0 && (
                     <div className={styles.noResults}>
