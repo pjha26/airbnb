@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './CategoryBar.module.css';
 import { categories } from '@/data/mockData';
+import { useFilterStore } from '@/store/filterStore';
 import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
 
 const CategoryBar = () => {
-    const [selectedCategory, setSelectedCategory] = useState('Amazing pools');
+    const { category: selectedCategory, setCategory } = useFilterStore();
 
     return (
         <div className={styles.categoryBar}>
@@ -24,7 +25,7 @@ const CategoryBar = () => {
                             <StaggerItem key={index} direction="up">
                                 <motion.div
                                     className={`${styles.categoryItem} ${isSelected ? styles.selected : ''}`}
-                                    onClick={() => setSelectedCategory(category.label)}
+                                    onClick={() => setCategory(category.label)}
                                     whileHover={{
                                         scale: 1.05,
                                         transition: { duration: 0.2 }

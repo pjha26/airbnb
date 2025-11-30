@@ -19,6 +19,7 @@ export default function FilteredListings({ initialListings }) {
         location,
         guests,
         propertyTypes,
+        category,
         minRating,
         selectedAmenities,
         workTravelScore,
@@ -41,6 +42,7 @@ export default function FilteredListings({ initialListings }) {
                 if (location) params.append('location', location);
                 if (guests > 1) params.append('guests', guests);
                 if (propertyTypes.length > 0) params.append('types', propertyTypes.join(','));
+                if (category) params.append('category', category);
                 if (minRating > 0) params.append('minRating', minRating);
                 if (selectedAmenities.length > 0) params.append('amenities', selectedAmenities.join(','));
 
@@ -61,7 +63,7 @@ export default function FilteredListings({ initialListings }) {
         };
 
         fetchListings();
-    }, [searchQuery, priceRange, location, guests, propertyTypes, minRating, selectedAmenities, workTravelScore, budgetComfortWeight, petFriendlyScore, travelMode]);
+    }, [searchQuery, priceRange, location, guests, propertyTypes, category, minRating, selectedAmenities, workTravelScore, budgetComfortWeight, petFriendlyScore, travelMode]);
 
     const activeFilterCount =
         (searchQuery ? 1 : 0) +

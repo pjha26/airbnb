@@ -13,6 +13,7 @@ export async function GET(request) {
         const location = searchParams.get('location') || '';
         const guests = parseInt(searchParams.get('guests')) || 0;
         const types = searchParams.get('types')?.split(',').filter(Boolean) || [];
+        const category = searchParams.get('category');
         const minRating = parseFloat(searchParams.get('minRating')) || 0;
         const amenities = searchParams.get('amenities')?.split(',').filter(Boolean) || [];
 
@@ -51,8 +52,13 @@ export async function GET(request) {
             where.maxGuests = { gte: guests };
         }
 
-        // Property types
-        if (types.length > 0) {
+        // Category filter (maps to type)
+        if (category) {
+            where.type = category;
+        }
+        // Property types (only apply if no category is selected, or intersect? 
+        // For now, if category is selected, it overrides types because they map to the same field)
+        else if (types.length > 0) {
             where.type = { in: types };
         }
 

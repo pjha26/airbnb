@@ -77,6 +77,9 @@ const ListingCard = ({ listing, priority = false }) => {
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     loading={priority ? "eager" : "lazy"}
                                     priority={priority}
+                                    onError={(e) => {
+                                        e.target.src = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+                                    }}
                                 />
                             </motion.div>
                             <motion.button

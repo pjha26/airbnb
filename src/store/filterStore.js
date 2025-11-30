@@ -21,6 +21,10 @@ export const useFilterStore = create((set) => ({
     propertyTypes: [],
     setPropertyTypes: (types) => set({ propertyTypes: types }),
 
+    // Category
+    category: 'Amazing pools',
+    setCategory: (category) => set({ category }),
+
     // Rating
     minRating: 0,
     setMinRating: (rating) => set({ minRating: rating }),
@@ -54,6 +58,7 @@ export const useFilterStore = create((set) => ({
         location: '',
         guests: 1,
         propertyTypes: [],
+        category: 'Amazing pools',
         minRating: 0,
         selectedAmenities: [],
         workTravelScore: 0,
@@ -70,6 +75,7 @@ export const useFilterStore = create((set) => ({
         if (state.location) count++;
         if (state.guests > 1) count++;
         if (state.propertyTypes.length > 0) count++;
+        if (state.category && state.category !== 'Amazing pools') count++;
         if (state.minRating > 0) count++;
         if (state.selectedAmenities.length > 0) count++;
         if (state.workTravelScore > 0) count++;
