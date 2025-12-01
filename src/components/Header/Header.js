@@ -17,10 +17,15 @@ export default function Header({ currentUser }) {
   const { signOut } = useClerk();
   const [isOpen, setIsOpen] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef(null);
   const router = useRouter();
 
   const profileImage = currentUser?.image || user?.imageUrl;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -81,7 +86,7 @@ export default function Header({ currentUser }) {
               <div className={styles.profileMenu} onClick={() => setIsOpen(!isOpen)} ref={dropdownRef}>
                 <Menu size={18} />
                 <div className={styles.avatar}>
-                  {isSignedIn ? (
+                  {mounted && isSignedIn && profileImage ? (
                     <img src={profileImage} alt="Profile" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
                   ) : (
                     <User size={18} className={styles.userIcon} />
